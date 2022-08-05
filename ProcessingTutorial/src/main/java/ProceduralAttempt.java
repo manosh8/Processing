@@ -10,6 +10,7 @@ public class ProceduralAttempt extends PApplet {
         size(800, 600);
     }
 
+
     int i,j,k,l=0;
 
     @Override
