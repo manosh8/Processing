@@ -1,27 +1,34 @@
 import processing.core.PApplet;
 public class ProceduralAttempt extends PApplet {
+
+    private static final int WIDTH = 800;
+    private static final int HEIGHT = 600;
+    private static final int DIAMETER = 10;
+    private static final int noOfBalls = 4;
+    private int[] speedOfEachball = new int[noOfBalls];
+
     public static void main(String[] args) {
         PApplet.main("ProceduralAttempt", args);
     }
-
     @Override
     public void settings() {
         super.settings();
-        size(800, 600);
+        size(WIDTH, HEIGHT);
     }
-
-
-    int i,j,k,l=0;
 
     @Override
     public void draw() {
-        ellipse(i, 600/5, 10, 10);
-        i++;
-        ellipse(j, (600/5)*2, 10, 10);
-        j+=2;
-        ellipse(k, (600/5)*3, 10, 10);
-        k+=3;
-        ellipse(l, (600/5)*4, 10, 10);
-        l+=4;
+        for (int i = 1; i<= noOfBalls; i++) {
+            ellipse(speedThroughX_Axis(i), ballsPositionInY_Axis(i), DIAMETER, DIAMETER);
+        }
+    }
+
+    private int speedThroughX_Axis(int speed) {
+        speedOfEachball[speed-1] += speed;
+        return speedOfEachball[speed - 1];
+    }
+
+    private int ballsPositionInY_Axis(int positionUnit) {
+        return (HEIGHT / 5) * positionUnit;
     }
 }
